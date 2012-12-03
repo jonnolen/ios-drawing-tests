@@ -10,4 +10,11 @@
 
 @interface PWFirstViewController : UIViewController
 
+
+@property (nonatomic, strong) IBOutlet UIImageView * imageView1;
+@property (nonatomic, strong) IBOutlet UIImageView * imageView2;
+@property (nonatomic, strong) IBOutlet UIImageView * imageView3;
+@property (nonatomic, strong) IBOutlet UIImageView * imageView4;
+
+
 @end

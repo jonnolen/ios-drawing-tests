@@ -36,6 +36,7 @@
 }
 
 -(UIImage *)sourceImage{
+//    return [UIImage imageNamed:@"selection_gradient"];
     UIGraphicsBeginImageContext(CGSizeMake(60.0, 60.0));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -124,9 +125,18 @@
     CGContextSetFillColorWithColor(ctx, [[UIColor darkGrayColor] CGColor]);
     
     CGContextFillRect(ctx, imageRect);
+    CGContextSaveGState(ctx);
     CGContextSetShadow(ctx, CGSizeMake(-1.0, 2.0), .5);
     
     [image drawInRect:imageRect];
+    
+    CGContextRestoreGState(ctx);
+    
+    
+    CGContextSetBlendMode(ctx, kCGBlendModeNormal);
+    
+    CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, .1);
+    CGContextFillRect(ctx, CGRectMake(10, 10, 40, 40));
     
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     

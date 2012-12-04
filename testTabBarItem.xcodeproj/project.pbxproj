@@ -28,6 +28,7 @@
 		FCD1684D166D37540060062A /* 30block_centered.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD1684C166D37530060062A /* 30block_centered.png */; };
 		FCD1684F166D3AA30060062A /* plus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD1684E166D3AA30060062A /* plus_icon.png */; };
 		FCD16851166D53E30060062A /* selection_gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD16850166D53E30060062A /* selection_gradient.png */; };
+		FCD1685C166EA11C0060062A /* PWTabBarImageGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD1685B166EA11C0060062A /* PWTabBarImageGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		FCD1684C166D37530060062A /* 30block_centered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30block_centered.png; sourceTree = "<group>"; };
 		FCD1684E166D3AA30060062A /* plus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_icon.png; sourceTree = "<group>"; };
 		FCD16850166D53E30060062A /* selection_gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selection_gradient.png; sourceTree = "<group>"; };
+		FCD1685A166EA11C0060062A /* PWTabBarImageGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTabBarImageGenerator.h; sourceTree = "<group>"; };
+		FCD1685B166EA11C0060062A /* PWTabBarImageGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTabBarImageGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		FCD1681C166BC9D30060062A /* testTabBarItem */ = {
 			isa = PBXGroup;
 			children = (
+				FCD1685A166EA11C0060062A /* PWTabBarImageGenerator.h */,
+				FCD1685B166EA11C0060062A /* PWTabBarImageGenerator.m */,
 				FCD16850166D53E30060062A /* selection_gradient.png */,
 				FCD1684E166D3AA30060062A /* plus_icon.png */,
 				FCD1684C166D37530060062A /* 30block_centered.png */,
@@ -219,6 +224,7 @@
 				FCD16827166BC9D30060062A /* PWAppDelegate.m in Sources */,
 				FCD16833166BC9D30060062A /* PWFirstViewController.m in Sources */,
 				FCD1683A166BC9D30060062A /* PWSecondViewController.m in Sources */,
+				FCD1685C166EA11C0060062A /* PWTabBarImageGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

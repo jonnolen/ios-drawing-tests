@@ -7,6 +7,8 @@
 //
 
 #import "PWFirstViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "PWTabBarImageGenerator.h"
 #define NC(x) x / 255.0
 @interface PWFirstViewController ()
 
@@ -106,11 +108,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self configureImageViews];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.imageView1.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeSourceIn]];
-    self.imageView2.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeDestinationIn]];
-    self.imageView3.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeSourceAtop]];
-    self.imageView4.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeDestinationAtop]];
+    
+    PWTabBarImageGenerator *gen = [[PWTabBarImageGenerator alloc] initWithIconSize:CGSizeMake(30,30) imageSize:CGSizeMake(34,34) iconImage:[UIImage imageNamed:@"plus_icon"]];
+    
+    self.imageView1.image = [gen selectedImage];
+    self.imageView2.image = [gen unselectedImage];
+    
+//    self.imageView1.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeSourceIn]];
+//    self.imageView2.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeDestinationIn]];
+//    self.imageView3.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeSourceAtop]];
+//    self.imageView4.image = [self compositeOverSlate:[self drawTabBarOverSourceWithBlend:kCGBlendModeDestinationAtop]];
+}
+
+-(void)configureImageViews{
+    [self setImageViewBorder:self.imageView1];
+    [self setImageViewBorder:self.imageView2];
+    [self setImageViewBorder:self.imageView3];
+    [self setImageViewBorder:self.imageView4];
+}
+
+-(void)setImageViewBorder:(UIImageView *)iv{
+    iv.layer.borderWidth = 2.0;
+    iv.layer.borderColor = [[UIColor darkTextColor] CGColor];
 }
 
 -(UIImage *)compositeOverSlate:(UIImage *)image{
@@ -121,14 +143,18 @@
 
     CGRect imageRect = CGRectMake(0, 0, 0, 0);
     imageRect.size = image.size;
-        
+    
     CGContextSetFillColorWithColor(ctx, [[UIColor darkGrayColor] CGColor]);
     
     CGContextFillRect(ctx, imageRect);
     CGContextSaveGState(ctx);
     CGContextSetShadow(ctx, CGSizeMake(-1.0, 2.0), .5);
+  
+    CGContextBeginTransparencyLayer(ctx, NULL);
     
     [image drawInRect:imageRect];
+    
+    CGContextEndTransparencyLayer(ctx);
     
     CGContextRestoreGState(ctx);
     
